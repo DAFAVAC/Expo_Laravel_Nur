@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, SafeAreaView, ScrollView, Text, TextInput, Alert, TouchableHighlight, View } from 'react-native';
 import Constants from 'expo-constants';
 import * as Location from "expo-location";
-import MapView from 'react-native-maps';
+import MapView ,{Marker}from 'react-native-maps';
 
 
 
@@ -99,11 +99,22 @@ export default function App() {
             <TextInput style={styles.input} keyboardType='numeric' placeholder="Telefono Convencional"/>
 
             <View style={styles.container}>
-              <MapView style={styles.map} region={region} />
+              <MapView style={styles.map} region={region}>
+              <Marker
+                    coordinate={{
+                      latitude: region.latitude,
+                      longitude: region.longitude
+                    }}
+                    title="You Location"
+                    description="Location donate"
+                    />
+                </MapView>
+              
             </View>
 
             <TouchableHighlight style={styles.textBottonSend}>
               <Text style={styles.textBotton} onPress={getPosition}>Upload files</Text>
+              
             </TouchableHighlight>
 
             <TouchableHighlight style={styles.button}>
