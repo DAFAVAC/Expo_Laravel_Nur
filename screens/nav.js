@@ -1,0 +1,20 @@
+import * as React from 'react';
+import {  View } from 'react-native';
+
+
+export default function nav() {
+    return (
+        <View style={styles.container}>
+            
+        </View>
+    )
+}
+
+
+
+
+
+
+
+
+

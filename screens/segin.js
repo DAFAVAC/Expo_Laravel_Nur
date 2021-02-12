@@ -30,6 +30,7 @@ export default function App() {
       <Text style={styles.textBotton}>Enviar</Text>
       </TouchableHighlight>
         </View>
+        
     </View>
      </ScrollView>
     </SafeAreaView>

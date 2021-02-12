@@ -12,7 +12,13 @@ export default function App() {
   /////////////////////////////////////////Location Agree/////////////////////////////////////////////
   const [geoLongitude, setLongitude] = useState(-77.5000000);
   const [geoLatitude, setLatitude] = useState(-2.0000000);
-  const [value, onChangeText] = React.useState('');
+  //const [{value,value1,value2,value3,value4,value5}, onChangeText] = React.useState('');
+  const [value, setText] = useState('');
+  const [value2, setText2] = useState('');
+  const [value3, setText3] = useState('');
+  const [value4, setText4] = useState('');
+  const [value5, setText5] = useState('');
+  const [value6, setText6] = useState('');
 
 
 
@@ -67,10 +73,17 @@ export default function App() {
 
   var latitud = region.latitude;
   var logitude = region.longitude;
+
+
+
+
   var dato = {
-    name: value,
-    latitude: latitud,
-    longitude: logitude
+        name:value,
+        last_name:value2,
+        identification:value3,
+        email:value4,
+        number:value5,
+        numberHouse:value6
   }
 
   ///////////////////////////////////////View////////////////////////////////////
@@ -81,22 +94,22 @@ export default function App() {
           <View>
             <Text style={styles.title}>Formulario NUR</Text>
             <Text style={styles.text}>Nombre:</Text>
-            <TextInput style={styles.input} placeholder="Nombres" onChangeText={text => onChangeText(text)} value={value} />
+            <TextInput style={styles.input} placeholder="Nombres"  onChangeText={text => setText(text)} value={value} />
 
             <Text style={styles.text}>Apellidos:</Text>
-            <TextInput style={styles.input} placeholder="Apellidos" />
+            <TextInput style={styles.input} placeholder="Apellidos"  onChangeText={text => setText2(text)} value={value2}/>
 
             <Text style={styles.text}>Cedula:</Text>
-            <TextInput style={styles.input} keyboardType='numeric' placeholder="Cedula" />
+            <TextInput style={styles.input} keyboardType='numeric' placeholder="Cedula"  onChangeText={text => setText3(text)} value={value3}/>
 
             <Text style={styles.text}>Correo electronico:</Text>
-            <TextInput style={styles.input} placeholder="Correo Electronico" />
+            <TextInput style={styles.input} placeholder="Correo Electronico"  onChangeText={text => setText4(text)} value={value4}/>
 
             <Text style={styles.text}>Telefono Celular:</Text>
-            <TextInput style={styles.input} keyboardType='numeric' placeholder="Telefono Celular" />
+            <TextInput style={styles.input} keyboardType='numeric' placeholder="Telefono Celular"  onChangeText={text => setText5(text)} value={value5}/>
 
             <Text style={styles.text}>Telefono Convencional:</Text>
-            <TextInput style={styles.input} keyboardType='numeric' placeholder="Telefono Convencional"/>
+            <TextInput style={styles.input} keyboardType='numeric' placeholder="Telefono Convencional"  onChangeText={text => setText6(text)} value={value6}/>
 
             <View style={styles.container}>
               <MapView style={styles.map} region={region}>
@@ -127,8 +140,9 @@ export default function App() {
   );
 }
 //////////////////////////////////////API////////////////////////////////////////
-const Api = (dato: object) => {
-  fetch('http://192.168.100.3:8000/api/testPost', {
+const Api = (dato) => {
+  console.warn(dato.name);
+  fetch('http://192.168.100.11:8000/api/userC', {
     method: 'POST',
     body: JSON.stringify(dato),
     headers: {

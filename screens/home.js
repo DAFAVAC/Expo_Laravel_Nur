@@ -10,11 +10,14 @@ import {
 
 import Constants from 'expo-constants';
 
+
 export default function App() {
   return (
+    
     <SafeAreaView style={styles.container}>
+      
       <ScrollView style={styles.scrollView}>
-
+      
        
         <Image source={require('../assets/img-titulo-donaciones.png')} style={styles.images}/>
         <Text style={styles.title}>Dar una Donacion</Text>
@@ -46,6 +49,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     
+    
   },
   containerScrol: {
     flex: 1,
@@ -55,6 +59,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginBottom: 15,
     marginHorizontal: 10,
+    padding:90
   },
   title:{
     textAlign:"center",
