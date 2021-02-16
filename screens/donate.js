@@ -4,6 +4,8 @@ import { StyleSheet, SafeAreaView, ScrollView, Text, TextInput, Alert, Touchable
 import Constants from 'expo-constants';
 import * as Location from "expo-location";
 import MapView ,{Marker}from 'react-native-maps';
+import axios from 'axios';
+
 
 
 
@@ -71,19 +73,23 @@ export default function App() {
     )
   }
 
-  var latitud = region.latitude;
-  var logitude = region.longitude;
+  var latitud = region.latitude.toString();
+  var logitude = region.longitude.toString();
 
 
 
 
   var dato = {
-        name:value,
-        last_name:value2,
-        identification:value3,
-        email:value4,
-        number:value5,
-        numberHouse:value6
+        'name':value,
+        'last_name':value2,
+        'identification':value3,
+        'email':value4,
+        'number':value5,
+        'numberHouse':value6,
+        'longitude':logitude,
+        'latitude':latitud
+
+
   }
 
   ///////////////////////////////////////View////////////////////////////////////
@@ -140,18 +146,18 @@ export default function App() {
   );
 }
 //////////////////////////////////////API////////////////////////////////////////
-const Api = (dato) => {
-  console.warn(dato.name);
-  fetch('http://192.168.100.11:8000/api/userC', {
-    method: 'POST',
-    body: JSON.stringify(dato),
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    }
-
-  })
-    .then(response => { if (response.ok) { Alert.alert("Formulario", "mensaje enviado", ["ok"]) } });
+const  Api = async (dato) => {
+  await axios.post(`http://192.168.100.18:8000/api/users`, dato)
+    .then(response =>
+            {
+              if (response.status=200) 
+              { 
+                //console.warn(response.data)
+                //console.log(response.data)
+                Alert.alert("Formulario", "mensaje enviado", ["ok"])
+              } 
+            }
+          )
 };
 
 

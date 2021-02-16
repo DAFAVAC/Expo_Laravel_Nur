@@ -3,11 +3,12 @@ import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { logger, consoleTransport } from "react-native-logs";
-import Dondate from "./screens/donate"
+import Donante from "./screens/donate"
 import Sigin from "./screens/segin"
 import Home from "./screens/home"
+import Camer from "./screens/camera"
 
-
+/* 
 function HomeScreen({ navigation }) {
   return (
 
@@ -36,7 +37,7 @@ function RegistrerScreen({ navigation }) {
 
   );
 }
-
+ */
 
 
 
@@ -49,9 +50,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Donate" component={DonateScreen} />
-        <Drawer.Screen name="Sigin" component={RegistrerScreen} />
+        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="Donate" component={Donante} />
+        <Drawer.Screen name="Sigin" component={Sigin} />
+        <Drawer.Screen name="Photo" component={Camer} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
