@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Image, View, Platform } from 'react-native';
+import { Button, Image, View, Text ,Platform } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions'
@@ -30,17 +30,17 @@ export default function ImagePickerExample() {
 
 
 takeImage = async () => {
-		// make sure that we have the permission
 
-			// launch the camera with the following settings
 			let image = await ImagePicker.launchCameraAsync({
 				mediaTypes: ImagePicker.MediaTypeOptions.Images,
 				allowsEditing: true,
 				aspect: [4,3],
 				quality: 1,
-				base64: true,
+				//base64: true,
 			})
-			// make sure a image was taken:
+
+      console.log(image);
+
 			if (!image.cancelled) {
           setImage(image.uri);
 			}
@@ -55,7 +55,7 @@ takeImage = async () => {
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
@@ -76,6 +76,8 @@ takeImage = async () => {
       <Button title="Take a foto" onPress={takeImage} />
       <Button title="Pick an image from camera roll" onPress={pickImage} />
       {image && <Image source={{ uri: image }} style={{ width: 400, height: 300 }} />}
+      <Text>{image}</Text>
+      
     </View>
   );
 }

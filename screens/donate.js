@@ -14,7 +14,6 @@ export default function App() {
   /////////////////////////////////////////Location Agree/////////////////////////////////////////////
   const [geoLongitude, setLongitude] = useState(-77.5000000);
   const [geoLatitude, setLatitude] = useState(-2.0000000);
-  //const [{value,value1,value2,value3,value4,value5}, onChangeText] = React.useState('');
   const [value, setText] = useState('');
   const [value2, setText2] = useState('');
   const [value3, setText3] = useState('');
@@ -88,8 +87,6 @@ export default function App() {
         'numberHouse':value6,
         'longitude':logitude,
         'latitude':latitud
-
-
   }
 
   ///////////////////////////////////////View////////////////////////////////////
